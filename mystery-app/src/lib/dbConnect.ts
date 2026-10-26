@@ -1,4 +1,3 @@
-import { promises } from "dns";
 import mongoose from "mongoose";
 
 type ConnectionObject = {
