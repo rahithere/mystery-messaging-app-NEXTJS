@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 type ConnectionObject = {
   isConnected?: number;
