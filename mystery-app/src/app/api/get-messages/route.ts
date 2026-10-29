@@ -4,6 +4,7 @@ import { authOptions } from "../auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
 import { User } from "next-auth";
 import mongoose from "mongoose";
+import { success } from "zod";
 
 export async function GET(request: Request) {
   await dbConnect();
@@ -42,5 +43,11 @@ export async function GET(request: Request) {
       { success: true, messages: user[0].messages },
       { status: 200 },
     );
-  } catch (error) {}
+  } catch (error) {
+    console.error("Unexpected Error");
+    return Response.json(
+      { success: false, message: "Unexpected Error" },
+      { status: 500 },
+    );
+  }
 }
